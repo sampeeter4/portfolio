@@ -185,6 +185,9 @@ const init = () => {
     console.error('Diagnostics setup error:', diagErr);
   }
 
+  // Initialize 3D Particle Background
+  init3DBackground();
+
   // Initialize Scroll Reveal Elements
   initScrollReveal();
 
@@ -404,10 +407,10 @@ function initTerminal() {
     let colorHex = 'inherit';
     let isBold = false;
     
-    if (type === 'input') { colorHex = '#ec4899'; isBold = true; }
+    if (type === 'input') { colorHex = '#ff1e27'; isBold = true; }
     else if (type === 'error') colorHex = '#ef4444';
-    else if (type === 'success') colorHex = '#34d399';
-    else if (type === 'info') colorHex = '#22d3ee';
+    else if (type === 'success') colorHex = '#ff8e91';
+    else if (type === 'info') colorHex = '#ff5e62';
     else if (type === 'muted') colorHex = '#64748b';
 
     const lineDiv = document.createElement('div');
@@ -851,4 +854,165 @@ function initContactForm() {
       `;
     }
   });
+}
+
+// 7. 3D PARTICLE BACKGROUND ANIMATION
+function init3DBackground() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+
+  // 3D Particles array
+  const particles = [];
+  const particleCount = Math.min(60, Math.floor((width * height) / 20000));
+  const maxDistance = 140;
+
+  // Perspective parameters
+  const focalLength = 300;
+  const centerX = width / 2;
+  const centerY = height / 2;
+
+  // Camera angles/rotations
+  let angleX = 0.0005;
+  let angleY = 0.0008;
+
+  // Mouse interaction
+  let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+
+  window.addEventListener('mousemove', (e) => {
+    // Normalized mouse coordinates (-1 to 1)
+    mouse.targetX = (e.clientX - centerX) / centerX;
+    mouse.targetY = (e.clientY - centerY) / centerY;
+  });
+
+  // Handle window resizing
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  // Particle Class
+  class Particle3D {
+    constructor() {
+      this.reset();
+      // Randomize z initially so they are scattered
+      this.z = Math.random() * 400 - 200;
+    }
+
+    reset() {
+      // Create random positions in 3D space (-250 to 250 range)
+      this.x = Math.random() * 600 - 300;
+      this.y = Math.random() * 600 - 300;
+      this.z = 200; // start at the back
+      
+      // Drifting speed
+      this.vx = Math.random() * 0.2 - 0.1;
+      this.vy = Math.random() * 0.2 - 0.1;
+      this.vz = -Math.random() * 0.5 - 0.1; // move towards screen
+    }
+
+    update() {
+      // Standard drifting
+      this.x += this.vx;
+      this.y += this.vy;
+      this.z += this.vz;
+
+      // 3D Rotations around X-axis
+      const cosX = Math.cos(angleX);
+      const sinX = Math.sin(angleX);
+      let y1 = this.y * cosX - this.z * sinX;
+      let z1 = this.z * cosX + this.y * sinX;
+
+      // 3D Rotations around Y-axis
+      const cosY = Math.cos(angleY);
+      const sinY = Math.sin(angleY);
+      let x2 = this.x * cosY - z1 * sinY;
+      let z2 = z1 * cosY + this.x * sinY;
+
+      this.x = x2;
+      this.y = y1;
+      this.z = z2;
+
+      // Reset if too close or out of bounds
+      if (this.z < -focalLength || Math.abs(this.x) > 500 || Math.abs(this.y) > 500) {
+        this.reset();
+      }
+    }
+
+    project() {
+      // Perspective projection
+      const scale = focalLength / (focalLength + this.z);
+      
+      // Interpolate mouse parallax
+      mouse.x += (mouse.targetX - mouse.x) * 0.08;
+      mouse.y += (mouse.targetY - mouse.y) * 0.08;
+
+      // Position projection + mouse shift based on depth (scale)
+      this.projX = (this.x * scale) + (width / 2) + (mouse.x * 35 * scale);
+      this.projY = (this.y * scale) + (height / 2) + (mouse.y * 35 * scale);
+      this.radius = Math.max(0.5, 2.5 * scale);
+    }
+  }
+
+  // Initialize particles
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle3D());
+  }
+
+  // Animation Loop
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Get current theme accent color
+    const isQA = document.body.classList.contains('theme-qa');
+    const rgb = isQA ? '255, 94, 98' : '255, 30, 39';
+
+    // Update and project all particles
+    particles.forEach(p => {
+      p.update();
+      p.project();
+    });
+
+    // Draw connection lines (3D depth-based alpha)
+    for (let i = 0; i < particles.length; i++) {
+      const p1 = particles[i];
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        
+        const dx = p1.projX - p2.projX;
+        const dy = p1.projY - p2.projY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < maxDistance) {
+          // Average scale for brightness
+          const avgScale = (focalLength / (focalLength + p1.z) + focalLength / (focalLength + p2.z)) / 2;
+          const alpha = (1 - (dist / maxDistance)) * 0.15 * avgScale;
+          
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(${rgb}, ${alpha})`;
+          ctx.lineWidth = 0.5 * avgScale;
+          ctx.moveTo(p1.projX, p1.projY);
+          ctx.lineTo(p2.projX, p2.projY);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw particles
+    particles.forEach(p => {
+      const scale = focalLength / (focalLength + p.z);
+      const alpha = 0.25 + (0.5 * scale);
+      ctx.beginPath();
+      ctx.arc(p.projX, p.projY, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${rgb}, ${alpha})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 }
