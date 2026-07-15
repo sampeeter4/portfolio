@@ -527,10 +527,10 @@ function renderSkills(filterType, searchVal) {
     card.style.borderLeft = `4px solid ${cardColorBorder}`;
 
     let skillsHTML = '';
-    category.skills.forEach(skill => {
+    category.skills.forEach((skill, sIdx) => {
       skillsHTML += `
-        <div class="badge" style="fontSize: 0.8rem; padding: 0.4rem 0.8rem; background: rgba(255,255,255,0.02); borderColor: rgba(255,255,255,0.06); color: var(--text-primary)">
-          <span style="marginRight: 4px">${skill.icon}</span>
+        <div class="badge skill-badge" style="animation-delay: ${sIdx * 0.04}s">
+          <span style="margin-right: 4px">${skill.icon}</span>
           ${skill.name}
         </div>
       `;
