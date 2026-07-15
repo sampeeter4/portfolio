@@ -297,7 +297,7 @@ p {
 
 @media (max-width: 768px) {
   .nav-links {
-    display: none; /* simple mobile design */
+    display: none;
   }
 }
 

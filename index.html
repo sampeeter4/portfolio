@@ -10,9 +10,480 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body class="theme-dev">
+    <!-- Ambient blurred background elements -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container nav-content">
+        <a href="#hero" class="logo">
+          ⚡SAM<span>PEETER</span>
+        </a>
+        
+        <div class="nav-links">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <button class="theme-switch-btn" id="persona-toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="8"></rect>
+            <path d="M12 2v9"></path>
+            <path d="M8 5a4 4 0 0 1 8 0"></path>
+          </svg>
+          Switch to QA Mode
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-wrapper section">
+      <div class="container hero-grid">
+        <div>
+          <div style="display: inline-flex; margin-bottom: 1.25rem;">
+            <span class="badge" id="hero-badge-text">🔧 Developer Mode Active</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Hello, I'm <br />
+            <span class="gradient-text">Sam Peeter</span>
+          </h1>
+          
+          <div class="hero-subtitle" id="hero-role-text">
+            Python Full Stack Developer
+          </div>
+
+          <p style="font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 600px; color: var(--text-secondary);">
+            I build robust, scale-ready backend web structures in Python and validate software layers using modern manual and automation testing protocols.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">Explore Projects</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-terminal-container">
+          <div class="terminal-window glass-card">
+            <div class="terminal-scanline"></div>
+            <div class="terminal-header">
+              <div class="terminal-buttons">
+                <div class="terminal-dot-red"></div>
+                <div class="terminal-dot-yellow"></div>
+                <div class="terminal-dot-green"></div>
+              </div>
+              <span class="terminal-title">sam_peeter_test_runner.sh</span>
+              <div style="width: 33px;"></div>
+            </div>
+            
+            <div class="terminal-body" id="terminal-logs-body">
+              <!-- Logs populated by script.js -->
+            </div>
+            
+            <div class="terminal-body" style="padding-top: 0; min-height: auto; max-height: auto;">
+              <div class="terminal-input-row">
+                <span class="terminal-prompt" style="color: rgb(236, 72, 153); font-weight: bold;">sam-peeter-pc:~$</span>
+                <input
+                  type="text"
+                  id="terminal-input-box"
+                  class="terminal-input"
+                  placeholder="Type 'run-tests' or 'help'..."
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+                <span class="terminal-cursor"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dual Persona Dashboard Summary -->
+    <section id="about" class="section reveal" style="background: rgba(3, 5, 10, 0.4); border-top: 1px solid var(--card-border);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3.5rem;">
+          <h2 style="font-size: 2.25rem; margin-bottom: 0.75rem;">Professional Summary</h2>
+          <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+            Toggle the core filter below to explore either side of my development and testing expertise.
+          </p>
+        </div>
+
+        <div class="persona-hero-selector">
+          <div class="persona-selector-container">
+            <button class="persona-option" id="dev-profile-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              Developer Profile
+            </button>
+            <button class="persona-option" id="qa-profile-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                <rect x="3" y="11" width="18" height="11" rx="8"></rect>
+                <path d="M12 2v9"></path>
+                <path d="M8 5a4 4 0 0 1 8 0"></path>
+              </svg>
+              QA Specialist Profile
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card" style="padding: 2.5rem; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center;" id="about-dashboard-content">
+          <!-- Text loaded dynamically by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Matrix -->
+    <section id="skills" class="section reveal">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3.5rem;">
+          <h2 style="font-size: 2.25rem; margin-bottom: 0.75rem;">Skills Matrix</h2>
+          <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+            My technical expertise across developer and tester stacks.
+          </p>
+        </div>
+        
+        <!-- Controls Bar -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2.5rem;">
+          <!-- Toggle Filters -->
+          <div style="display: flex; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); border-radius: 9999px; padding: 0.3rem; gap: 0.25rem;">
+            <button class="badge" id="filter-tab-all" style="border: none; cursor: pointer; padding: 0.5rem 1.25rem; font-weight: 700; font-size: 0.8rem;">All Areas</button>
+            <button class="badge" id="filter-tab-dev" style="border: none; cursor: pointer; padding: 0.5rem 1.25rem; font-weight: 700; font-size: 0.8rem;">Dev Stack</button>
+            <button class="badge" id="filter-tab-qa" style="border: none; cursor: pointer; padding: 0.5rem 1.25rem; font-weight: 700; font-size: 0.8rem;">QA & Testing</button>
+          </div>
+
+          <!-- Search Box -->
+          <div style="position: relative; width: 100%; max-width: 300px;">
+            <input
+              type="text"
+              id="skills-search-box"
+              placeholder="Search skills..."
+              class="form-input"
+              style="padding-top: 0.5rem; padding-bottom: 0.5rem; padding-left: 2.5rem; font-size: 0.875rem; border-radius: 9999px; border: 1px solid rgba(var(--accent-color-rgb), 0.2);"
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+        </div>
+
+        <div id="skills-matrix-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+          <!-- Skill categories generated by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="projects" class="section reveal" style="background: rgba(3, 5, 10, 0.4); border-top: 1px solid var(--card-border);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3.5rem;">
+          <h2 style="font-size: 2.25rem; margin-bottom: 0.75rem;">Featured Projects</h2>
+          <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+            Click on each project to toggle between developer implementation specifics and QA/testing results.
+          </p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem;" id="projects-grid-container">
+          <!-- Projects generated by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="section reveal">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <h2 style="font-size: 2.25rem; margin-bottom: 0.75rem;">Work & Education</h2>
+          <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+            A chronology of my professional experience, academic background, and technical training.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 4rem;">
+          <!-- Work Timeline -->
+          <div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-mono);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+              Professional Experience
+            </h3>
+            
+            <div class="timeline">
+              <!-- Item 1 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Apr 2026 -- Present</div>
+                <div class="glass-card" style="padding: 1.75rem;">
+                  <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Software Testing Trainee</h4>
+                  <div style="font-size: 0.85rem; color: var(--accent-color); font-family: var(--font-mono); margin-bottom: 1.25rem; font-weight: 700;">
+                    QSpiders, Kochi
+                  </div>
+                  <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.5rem;">Gained hands-on experience in manual testing and software quality assurance processes.</li>
+                    <li style="margin-bottom: 0.5rem;">Drafted comprehensive test case designs, bug reporting documentation, and database assertions.</li>
+                    <li style="margin-bottom: 0.5rem;">Executed manual, functional, regression, smoke, API, and database testing suites.</li>
+                    <li style="margin-bottom: 0.5rem;">Practiced Agile/Scrum methodologies, tracking defects and sprint goals closely.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Jan 2026 -- Mar 2026</div>
+                <div class="glass-card" style="padding: 1.75rem;">
+                  <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Python and Machine Learning Intern</h4>
+                  <div style="font-size: 0.85rem; color: var(--accent-color); font-family: var(--font-mono); margin-bottom: 1.25rem; font-weight: 700;">
+                    Camerin Innovative Solutions
+                  </div>
+                  <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.5rem;">Developed Python-based healthcare software modules using ML models.</li>
+                    <li style="margin-bottom: 0.5rem;">Assisted in engineering automated recommendation modules and API routing.</li>
+                    <li style="margin-bottom: 0.5rem;">Performed backend endpoint integrations, Postman API testing, debugging, and validation checks.</li>
+                    <li style="margin-bottom: 0.5rem;">Collaborated directly with the QA and Dev teams to maintain clean code and release readiness.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Oct 2023 -- Mar 2024</div>
+                <div class="glass-card" style="padding: 1.75rem;">
+                  <h4 style="font-size: 1.15rem; margin-bottom: 0.25rem;">Python Full Stack Development Intern</h4>
+                  <div style="font-size: 0.85rem; color: var(--accent-color); font-family: var(--font-mono); margin-bottom: 1.25rem; font-weight: 700;">
+                    upGrad
+                  </div>
+                  <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.5rem;">Created responsive full-stack web sites utilizing Python, Django, MySQL, HTML, CSS, JavaScript, and Bootstrap.</li>
+                    <li style="margin-bottom: 0.5rem;">Built and documented clean RESTful API structures connecting web frontends to backend logic.</li>
+                    <li style="margin-bottom: 0.5rem;">Designed database schemas, executing CRUD operations and indexing queries.</li>
+                    <li style="margin-bottom: 0.5rem;">Utilized Git/GitHub for cooperative development within Agile sprints.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education & Certs -->
+          <div>
+            <div style="margin-bottom: 4rem;">
+              <h3 style="font-size: 1.4rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-mono);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                </svg>
+                Education
+              </h3>
+              
+              <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="glass-card" style="padding: 1.5rem; border-left: 4px solid var(--accent-color);">
+                  <div class="timeline-date">Aug 2024 -- Present</div>
+                  <h4 style="font-size: 1rem;">Master of Computer Applications (MCA)</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">MACFAST College, Tiruvalla (MG University)</p>
+                </div>
+                
+                <div class="glass-card" style="padding: 1.5rem; border-left: 4px solid var(--accent-color);">
+                  <div class="timeline-date">Jun 2023 -- Dec 2023</div>
+                  <h4 style="font-size: 1rem;">Python Full Stack Developer Training</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">UpGrad Golden Gate University</p>
+                </div>
+
+                <div class="glass-card" style="padding: 1.5rem; border-left: 4px solid var(--accent-color);">
+                  <div class="timeline-date">Aug 2020 -- Mar 2023</div>
+                  <h4 style="font-size: 1rem;">Bachelor of Computer Applications (BCA)</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);">Mar Chrysostom College, Adoor (Kerala University)</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="font-size: 1.4rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-mono);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="7"></circle>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+                Certifications
+              </h3>
+              
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="glass-card" style="padding: 1.15rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <h4 style="font-size: 0.9rem;">Python Full Stack Development</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">UpGrad Golden Gate University</p>
+                  </div>
+                  <span class="badge">2023</span>
+                </div>
+                
+                <div class="glass-card" style="padding: 1.15rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <h4 style="font-size: 0.9rem;">Full Stack Development (MERN)</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Capital Infotech, Thiruvalla</p>
+                  </div>
+                  <span class="badge">2024</span>
+                </div>
+
+                <div class="glass-card" style="padding: 1.15rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <h4 style="font-size: 0.9rem;">Manual & Basic Automation Testing</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">QSpiders, Kochi</p>
+                  </div>
+                  <span class="badge">Active</span>
+                </div>
+
+                <div class="glass-card" style="padding: 1.15rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <h4 style="font-size: 0.9rem;">Python and Machine Learning</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Camerin Innovative Solutions</p>
+                  </div>
+                  <span class="badge">2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="section reveal" style="background: rgba(3, 5, 10, 0.4); border-top: 1px solid var(--card-border);">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <h2 style="font-size: 2.25rem; margin-bottom: 0.75rem;">Get in Touch</h2>
+          <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+            Have an opening, a project idea, or just want to chat? Send me a message below.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Contact Details</h3>
+            
+            <div class="contact-method">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono);">Email</h4>
+                <p style="font-size: 0.95rem; font-weight: 600;">sampeter9977@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono);">Phone</h4>
+                <p style="font-size: 0.95rem; font-weight: 600;">+1 702-558-4735</p>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono);">Location</h4>
+                <p style="font-size: 0.95rem; font-weight: 600;">Pathanamthitta, Kerala, India</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="contact-form-container">
+            <form class="glass-card" style="padding: 2rem;" id="contact-email-form">
+              <div class="form-group">
+                <label class="form-label" for="contact-name-input">Name</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="contact-name-input"
+                  required
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-email-input">Email</label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="contact-email-input"
+                  required
+                  placeholder="Your email address"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-msg-textarea">Message</label>
+                <textarea
+                  class="form-textarea"
+                  id="contact-msg-textarea"
+                  rows="4"
+                  required
+                  placeholder="Your message details..."
+                ></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="submit" style="width: 100%; justify-content: center;">
+                Send Message Packet
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-socials">
+          <a href="https://github.com/sampeeter4" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+          <a href="https://www.linkedin.com/in/sam-peeter-b133b0292" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
+          Designed & Engineered by Sam Peeter © <span id="footer-year">2026</span>. Powered by Vanilla HTML5 + CSS3 + ES6 JS.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Main JavaScript File -->
+    <script src="script.js"></script>
+    <script>
+      // Setup current year dynamically
+      document.getElementById('footer-year').innerText = new Date().getFullYear();
+    </script>
   </body>
 </html>
