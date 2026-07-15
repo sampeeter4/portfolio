@@ -174,6 +174,17 @@ const projectsData = [
 
 // DOMContentLoaded Entrypoint
 document.addEventListener('DOMContentLoaded', () => {
+  // Update diagnostics panel
+  try {
+    const diagJs = document.getElementById('diag-js-status');
+    if (diagJs) diagJs.innerText = 'portfolio.js loaded: Yes';
+    
+    const diagSkills = document.getElementById('diag-skills-count');
+    if (diagSkills) diagSkills.innerText = `skillsData size: ${skillsData.length}`;
+  } catch (diagErr) {
+    console.error('Diagnostics setup error:', diagErr);
+  }
+
   // Initialize Scroll Reveal Elements
   initScrollReveal();
 
@@ -495,70 +506,85 @@ function initTerminal() {
 // 4. DYNAMIC SKILLS MATRIX RENDERING
 function renderSkills(filterType, searchVal) {
   const container = document.getElementById('skills-matrix-grid');
-  container.innerHTML = ''; // reset
+  const diagErr = document.getElementById('diag-last-error');
+  const diagGrid = document.getElementById('diag-grid-children');
 
-  const filteredCategories = skillsData
-    .map((category) => {
-      if (filterType === 'dev' && category.type === 'qa') return null;
-      if (filterType === 'qa' && category.type === 'dev') return null;
-
-      const matchingSkills = category.skills.filter((skill) =>
-        skill.name.toLowerCase().includes(searchVal.toLowerCase())
-      );
-
-      if (matchingSkills.length === 0) return null;
-
-      return {
-        ...category,
-        skills: matchingSkills,
-      };
-    })
-    .filter(Boolean);
-
-  if (filteredCategories.length === 0) {
-    container.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted)">
-        No skills matching "${searchVal}" found under current filter criteria.
-      </div>
-    `;
+  if (!container) {
+    if (diagErr) diagErr.innerText = 'Error: #skills-matrix-grid element is missing!';
     return;
   }
+  container.innerHTML = ''; // reset
 
-  filteredCategories.forEach((category, idx) => {
-    const cardColorBorder = category.type === 'dev' 
-      ? 'var(--dev-color)' 
-      : category.type === 'qa' 
-        ? 'var(--qa-color)' 
-        : 'var(--accent-color)';
+  try {
+    const filteredCategories = skillsData
+      .map((category) => {
+        if (filterType === 'dev' && category.type === 'qa') return null;
+        if (filterType === 'qa' && category.type === 'dev') return null;
 
-    const card = document.createElement('div');
-    card.className = 'glass-card skill-card';
-    card.style.padding = '1.5rem';
-    card.style.animation = 'skillCardFade 0.4s ease forwards';
-    card.style.animationDelay = `${idx * 0.05}s`;
-    card.style.borderLeft = `4px solid ${cardColorBorder}`;
+        const matchingSkills = category.skills.filter((skill) =>
+          skill.name.toLowerCase().includes(searchVal.toLowerCase())
+        );
 
-    let skillsHTML = '';
-    category.skills.forEach((skill, sIdx) => {
-      skillsHTML += `
-        <div class="badge skill-badge" style="animation-delay: ${sIdx * 0.04}s">
-          <span style="margin-right: 4px">${skill.icon}</span>
-          ${skill.name}
+        if (matchingSkills.length === 0) return null;
+
+        return {
+          ...category,
+          skills: matchingSkills,
+        };
+      })
+      .filter(Boolean);
+
+    if (filteredCategories.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted)">
+          No skills matching "${searchVal}" found under current filter criteria.
         </div>
       `;
+      if (diagGrid) diagGrid.innerText = 'Grid child elements: 0 (No matches)';
+      return;
+    }
+
+    filteredCategories.forEach((category, idx) => {
+      const cardColorBorder = category.type === 'dev' 
+        ? 'var(--dev-color)' 
+        : category.type === 'qa' 
+          ? 'var(--qa-color)' 
+          : 'var(--accent-color)';
+
+      const card = document.createElement('div');
+      card.className = 'glass-card skill-card';
+      card.style.padding = '1.5rem';
+      card.style.animation = 'skillCardFade 0.4s ease forwards';
+      card.style.animationDelay = `${idx * 0.05}s`;
+      card.style.borderLeft = `4px solid ${cardColorBorder}`;
+
+      let skillsHTML = '';
+      category.skills.forEach((skill, sIdx) => {
+        skillsHTML += `
+          <div class="badge skill-badge" style="animation-delay: ${sIdx * 0.04}s">
+            <span style="margin-right: 4px">${skill.icon}</span>
+            ${skill.name}
+          </div>
+        `;
+      });
+
+      card.innerHTML = `
+        <h3 style="font-size: 1rem; font-family: var(--font-mono); margin-bottom: 1.25rem; color: var(--text-primary)">
+          ${category.title}
+        </h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem">
+          ${skillsHTML}
+        </div>
+      `;
+
+      container.appendChild(card);
     });
 
-    card.innerHTML = `
-      <h3 style="font-size: 1rem; font-family: var(--font-mono); margin-bottom: 1.25rem; color: var(--text-primary)">
-        ${category.title}
-      </h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem">
-        ${skillsHTML}
-      </div>
-    `;
-
-    container.appendChild(card);
-  });
+    if (diagGrid) diagGrid.innerText = `Grid child elements: ${container.children.length}`;
+  } catch (err) {
+    console.error('Skills rendering failed:', err);
+    if (diagErr) diagErr.innerText = `Render Error: ${err.message}`;
+  }
 }
 
 function initSkillsFilters() {

@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=1.7">
+    <link rel="stylesheet" href="portfolio.css">
   </head>
   <body class="theme-dev">
     <!-- Ambient blurred background elements -->
@@ -77,6 +77,14 @@
         </button>
       </div>
     </nav>
+
+    <div id="diagnostics-panel" style="background: rgba(255, 0, 0, 0.15); border: 2px solid #ef4444; padding: 1.25rem; color: #f8fafc; margin: 5rem auto 2rem; max-width: 600px; font-family: monospace; border-radius: 12px; z-index: 9999; position: relative;">
+      <h3 style="margin-bottom: 0.75rem; color: #ef4444;">🔍 Portfolio Diagnostics</h3>
+      <div id="diag-js-status" style="margin-bottom: 0.25rem;">portfolio.js loaded: No</div>
+      <div id="diag-skills-count" style="margin-bottom: 0.25rem;">skillsData size: 0</div>
+      <div id="diag-grid-children" style="margin-bottom: 0.25rem;">Grid child elements: 0</div>
+      <div id="diag-last-error" style="color: #64748b;">Last Error: None</div>
+    </div>
 
     <!-- Hero Section -->
     <section id="hero" class="hero-wrapper section">
@@ -514,7 +522,7 @@
     </footer>
 
     <!-- Main JavaScript File -->
-    <script src="script.js?v=1.7"></script>
+    <script src="portfolio.js"></script>
     <script>
       // Setup current year dynamically
       document.getElementById('footer-year').innerText = new Date().getFullYear();
