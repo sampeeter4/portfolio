@@ -173,7 +173,7 @@ const projectsData = [
 ];
 
 // DOMContentLoaded Entrypoint
-document.addEventListener('DOMContentLoaded', () => {
+const init = () => {
   // Update diagnostics panel
   try {
     const diagJs = document.getElementById('diag-js-status');
@@ -205,7 +205,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize Contact Form
   initContactForm();
-});
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 
 // 1. SCROLL REVEAL OBSERVER
 function initScrollReveal() {
@@ -245,7 +251,7 @@ function initPersonaToggle() {
       
       // Update toggle button text
       toggleBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="8"></rect>
           <path d="M12 2v9"></path>
           <path d="M8 5a4 4 0 0 1 8 0"></path>
@@ -296,7 +302,7 @@ function initPersonaToggle() {
       
       // Update toggle button text
       toggleBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="16 18 22 12 16 6"></polyline>
           <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
@@ -669,9 +675,9 @@ function renderProjects() {
     card.innerHTML = `
       <div class="project-card-header">
         <div class="project-card-header-top">
-          <h3 style="fontSize: 1.25rem; fontWeight: 800">${project.title}</h3>
+          <h3 style="font-size: 1.25rem; font-weight: 800">${project.title}</h3>
         </div>
-        <div style="display: flex; flexWrap: wrap; gap: 0.5rem; marginTop: 0.25rem">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem">
           ${tagsHTML}
         </div>
       </div>
@@ -680,7 +686,7 @@ function renderProjects() {
         <!-- Toggle Controls -->
         <div class="project-toggle">
           <button class="project-toggle-btn active" id="btn-dev-${project.id}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style="marginRight: 4px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px">
               <polyline points="16 18 22 12 16 6"></polyline>
               <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
@@ -688,7 +694,7 @@ function renderProjects() {
           </button>
           
           <button class="project-toggle-btn" id="btn-qa-${project.id}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style="marginRight: 4px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px">
               <rect x="3" y="11" width="18" height="11" rx="8"></rect>
               <path d="M12 2v9"></path>
               <path d="M8 5a4 4 0 0 1 8 0"></path>
@@ -795,12 +801,12 @@ function initContactForm() {
     if (name && email && message) {
       // Transition to success screen
       container.innerHTML = `
-        <div class="glass-card" style="padding: 2.5rem; textAlign: center; border: 1px solid #10B981; background: rgba(16, 185, 129, 0.02); display: flex; flexDirection: column; alignItems: center; gap: 1rem; animation: contentSlideIn 0.5s ease">
-          <div style="width: 48px; height: 48px; borderRadius: 50%; background: rgba(16, 185, 129, 0.1); display: flex; alignItems: center; justifyContent: center; color: #10B981; fontSize: 1.5rem">
+        <div class="glass-card" style="padding: 2.5rem; text-align: center; border: 1px solid #10B981; background: rgba(16, 185, 129, 0.02); display: flex; flex-direction: column; align-items: center; gap: 1rem; animation: contentSlideIn 0.5s ease">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center; color: #10B981; font-size: 1.5rem">
             ✓
           </div>
-          <h3 style="fontSize: 1.25rem">Message Transmitted!</h3>
-          <p style="fontSize: 0.9rem; color: var(--text-secondary)">
+          <h3 style="font-size: 1.25rem">Message Transmitted!</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary)">
             Thank you for reaching out, ${name}. The data packets have been successfully routed. I will get back to you shortly.
           </p>
         </div>
