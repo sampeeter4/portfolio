@@ -593,6 +593,22 @@ function initSkillsFilters() {
 
   // Set default active tab
   setTabActive('all');
+
+  // Connect Navbar Dropdown Items to change filters automatically
+  const navItemDev = document.getElementById('nav-item-dev-skills');
+  const navItemQa = document.getElementById('nav-item-qa-skills');
+
+  if (navItemDev) {
+    navItemDev.addEventListener('click', () => {
+      setTabActive('dev');
+    });
+  }
+
+  if (navItemQa) {
+    navItemQa.addEventListener('click', () => {
+      setTabActive('qa');
+    });
+  }
 }
 
 // 5. RENDER PROJECTS

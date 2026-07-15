@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=1.4">
+    <link rel="stylesheet" href="style.css?v=1.5">
   </head>
   <body class="theme-dev">
     <!-- Ambient blurred background elements -->
@@ -27,7 +27,13 @@
         
         <div class="nav-links">
           <a href="#about" class="nav-link">About</a>
-          <a href="#skills" class="nav-link">Skills</a>
+          <div class="nav-dropdown">
+            <a href="#skills" class="nav-link dropdown-trigger">Skills ▾</a>
+            <div class="dropdown-menu">
+              <a href="#skills" class="dropdown-item" id="nav-item-dev-skills">Dev Stack</a>
+              <a href="#skills" class="dropdown-item" id="nav-item-qa-skills">QA & Testing</a>
+            </div>
+          </div>
           <a href="#projects" class="nav-link">Projects</a>
           <a href="#experience" class="nav-link">Experience</a>
           <a href="#contact" class="nav-link">Contact</a>
@@ -480,7 +486,7 @@
     </footer>
 
     <!-- Main JavaScript File -->
-    <script src="script.js?v=1.4"></script>
+    <script src="script.js?v=1.5"></script>
     <script>
       // Setup current year dynamically
       document.getElementById('footer-year').innerText = new Date().getFullYear();

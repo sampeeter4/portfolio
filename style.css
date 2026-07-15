@@ -332,6 +332,59 @@ p {
   width: 100%;
 }
 
+/* Nav Dropdown Menu */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(10, 15, 30, 0.95);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  min-width: 160px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 0.5rem 0;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: block;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  transition: var(--transition-smooth);
+}
+
+.dropdown-item:hover {
+  color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.03);
+  padding-left: 1.5rem;
+}
+
+
 /* Hero Section Styles */
 .hero-wrapper {
   min-height: 100vh;
