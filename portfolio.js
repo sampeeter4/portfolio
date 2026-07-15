@@ -407,10 +407,10 @@ function initTerminal() {
     let colorHex = 'inherit';
     let isBold = false;
     
-    if (type === 'input') { colorHex = '#ff1e27'; isBold = true; }
+    if (type === 'input') { colorHex = '#ec4899'; isBold = true; }
     else if (type === 'error') colorHex = '#ef4444';
-    else if (type === 'success') colorHex = '#ff8e91';
-    else if (type === 'info') colorHex = '#ff5e62';
+    else if (type === 'success') colorHex = '#34d399';
+    else if (type === 'info') colorHex = '#22d3ee';
     else if (type === 'muted') colorHex = '#64748b';
 
     const lineDiv = document.createElement('div');
@@ -968,7 +968,7 @@ function init3DBackground() {
 
     // Get current theme accent color
     const isQA = document.body.classList.contains('theme-qa');
-    const rgb = isQA ? '255, 94, 98' : '255, 30, 39';
+    const rgb = isQA ? '16, 185, 129' : '0, 242, 254';
 
     // Update and project all particles
     particles.forEach(p => {
