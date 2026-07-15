@@ -14,7 +14,7 @@ const skillsData = [
       { name: 'Python', icon: '🐍' },
       { name: 'Core Java', icon: '☕' },
       { name: 'JavaScript', icon: '⚡' },
-      { name: 'SQL', icon: '🗄️' },
+      { name: 'SQL', icon: '🗄️' }
     ]
   },
   {
@@ -25,25 +25,31 @@ const skillsData = [
       { name: 'FastAPI', icon: '🚀' },
       { name: 'React', icon: '⚛️' },
       { name: 'Angular', icon: '🅰️' },
-      { name: 'Bootstrap', icon: '🥾' },
+      { name: 'Bootstrap', icon: '🥾' }
     ]
   },
   {
-    title: 'Web Technologies & Databases',
+    title: 'Web Technologies',
     type: 'dev',
     skills: [
       { name: 'HTML5', icon: '🌐' },
       { name: 'CSS3', icon: '🎨' },
-      { name: 'REST API', icon: '🔗' },
+      { name: 'REST API', icon: '🔗' }
+    ]
+  },
+  {
+    title: 'Databases',
+    type: 'dev',
+    skills: [
       { name: 'MySQL', icon: '🐬' },
       { name: 'Oracle', icon: '🔴' },
       { name: 'SQLite', icon: '🪶' },
       { name: 'MongoDB', icon: '🍃' },
-      { name: 'JDBC', icon: '🔌' },
+      { name: 'JDBC', icon: '🔌' }
     ]
   },
   {
-    title: 'Quality Assurance & Testing',
+    title: 'Testing',
     type: 'qa',
     skills: [
       { name: 'Manual Testing', icon: '📝' },
@@ -52,11 +58,11 @@ const skillsData = [
       { name: 'Smoke Testing', icon: '💨' },
       { name: 'API Testing', icon: '📡' },
       { name: 'Database Testing', icon: '🛡️' },
-      { name: 'User Acceptance Testing (UAT)', icon: '🤝' },
+      { name: 'User Acceptance Testing (UAT)', icon: '🤝' }
     ]
   },
   {
-    title: 'Test Management & Tracking',
+    title: 'Test Management',
     type: 'qa',
     skills: [
       { name: 'Test Case Design', icon: '✏️' },
@@ -64,20 +70,27 @@ const skillsData = [
       { name: 'Defect Life Cycle', icon: '🔄' },
       { name: 'Bug Reporting', icon: '🐞' },
       { name: 'Defect Tracking', icon: '🎯' },
-      { name: 'JIRA', icon: '🌀' },
+      { name: 'JIRA', icon: '🌀' }
     ]
   },
   {
-    title: 'ML / AI & Tools',
+    title: 'ML / AI',
     type: 'all',
     skills: [
       { name: 'Machine Learning', icon: '🧠' },
       { name: 'Prompt Engineering', icon: '✍️' },
-      { name: 'API Integration', icon: '🔗' },
+      { name: 'API Integration', icon: '🔗' }
+    ]
+  },
+  {
+    title: 'Tools & Platforms',
+    type: 'all',
+    skills: [
       { name: 'Selenium', icon: '🤖' },
       { name: 'Postman', icon: '📯' },
-      { name: 'Git & GitHub', icon: '🐙' },
-      { name: 'VS Code', icon: '💻' },
+      { name: 'Git', icon: '🐙' },
+      { name: 'GitHub', icon: '🐙' },
+      { name: 'VS Code', icon: '💻' }
     ]
   },
   {
@@ -87,7 +100,7 @@ const skillsData = [
       { name: 'SDLC', icon: '🔄' },
       { name: 'STLC', icon: '🧪' },
       { name: 'Agile', icon: '🏃' },
-      { name: 'Scrum', icon: '👥' },
+      { name: 'Scrum', icon: '👥' }
     ]
   }
 ];
