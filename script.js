@@ -519,11 +519,9 @@ function renderSkills(filterType, searchVal) {
         : 'var(--accent-color)';
 
     const card = document.createElement('div');
-    card.className = 'glass-card';
+    card.className = 'glass-card skill-card';
     card.style.padding = '1.5rem';
-    card.style.animation = 'skillCardFade 0.4s ease forwards';
-    card.style.opacity = 0;
-    card.style.animationDelay = `${idx * 0.05}s`;
+    card.style.setProperty('--card-index', idx);
     card.style.borderLeft = `4px solid ${cardColorBorder}`;
 
     let skillsHTML = '';
@@ -537,10 +535,10 @@ function renderSkills(filterType, searchVal) {
     });
 
     card.innerHTML = `
-      <h3 style="fontSize: 1rem; fontFamily: var(--font-mono); marginBottom: 1.25rem; color: var(--text-primary)">
+      <h3 style="font-size: 1rem; font-family: var(--font-mono); margin-bottom: 1.25rem; color: var(--text-primary)">
         ${category.title}
       </h3>
-      <div style="display: flex; flexWrap: wrap; gap: 0.75rem">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem">
         ${skillsHTML}
       </div>
     `;
