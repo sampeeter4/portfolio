@@ -631,33 +631,41 @@ function initSkillsFilters() {
   const setTabActive = (tab) => {
     // Reset states
     [tabAll, tabDev, tabQa].forEach(btn => {
-      btn.style.background = 'transparent';
-      btn.style.color = 'var(--text-secondary)';
+      if (btn) {
+        btn.style.background = 'transparent';
+        btn.style.color = 'var(--text-secondary)';
+      }
     });
 
     if (tab === 'all') {
-      tabAll.style.background = 'var(--accent-gradient)';
-      tabAll.style.color = '#05070f';
+      if (tabAll) {
+        tabAll.style.background = 'var(--accent-gradient)';
+        tabAll.style.color = '#05070f';
+      }
       activeTab = 'all';
     } else if (tab === 'dev') {
-      tabDev.style.background = 'var(--dev-gradient)';
-      tabDev.style.color = '#05070f';
+      if (tabDev) {
+        tabDev.style.background = 'var(--dev-gradient)';
+        tabDev.style.color = '#05070f';
+      }
       activeTab = 'dev';
     } else if (tab === 'qa') {
-      tabQa.style.background = 'var(--qa-gradient)';
-      tabQa.style.color = '#05070f';
+      if (tabQa) {
+        tabQa.style.background = 'var(--qa-gradient)';
+        tabQa.style.color = '#05070f';
+      }
       activeTab = 'qa';
     }
     updateFilters();
   };
 
   // Add click listeners
-  tabAll.addEventListener('click', () => setTabActive('all'));
-  tabDev.addEventListener('click', () => setTabActive('dev'));
-  tabQa.addEventListener('click', () => setTabActive('qa'));
+  if (tabAll) tabAll.addEventListener('click', () => setTabActive('all'));
+  if (tabDev) tabDev.addEventListener('click', () => setTabActive('dev'));
+  if (tabQa) tabQa.addEventListener('click', () => setTabActive('qa'));
 
   // Search query input listener
-  searchInput.addEventListener('input', updateFilters);
+  if (searchInput) searchInput.addEventListener('input', updateFilters);
 
   // Set default active tab
   setTabActive('all');
@@ -665,6 +673,7 @@ function initSkillsFilters() {
   // Connect Navbar Dropdown Items to change filters automatically
   const navItemDev = document.getElementById('nav-item-dev-skills');
   const navItemQa = document.getElementById('nav-item-qa-skills');
+  const navTrigger = document.querySelector('.dropdown-trigger');
 
   if (navItemDev) {
     navItemDev.addEventListener('click', () => {
@@ -675,6 +684,12 @@ function initSkillsFilters() {
   if (navItemQa) {
     navItemQa.addEventListener('click', () => {
       setTabActive('qa');
+    });
+  }
+
+  if (navTrigger) {
+    navTrigger.addEventListener('click', () => {
+      setTabActive('all');
     });
   }
 }
