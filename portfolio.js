@@ -205,6 +205,9 @@ const init = () => {
 
   // Initialize Contact Form
   initContactForm();
+
+  // Initialize Mobile Menu
+  initMobileMenu();
 };
 
 if (document.readyState === 'loading') {
@@ -214,6 +217,26 @@ if (document.readyState === 'loading') {
 }
 
 // 1. SCROLL REVEAL OBSERVER
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const links = document.querySelectorAll('.nav-link, .dropdown-item');
+
+  if (toggleBtn && navLinks) {
+    toggleBtn.addEventListener('click', () => {
+      toggleBtn.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        toggleBtn.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  }
+}
+
 function initScrollReveal() {
   const observerOptions = {
     root: null,
@@ -270,7 +293,7 @@ function initPersonaToggle() {
           <p style="margin-bottom: 1.5rem; line-height: 1.7; color: var(--text-secondary)">
             As a Python Developer, I focus on building stable and highly performant backend architectures using modern frameworks like <strong>FastAPI</strong> and <strong>Django</strong>. I structure secure REST APIs, model relational database tables using <strong>MySQL</strong> and <strong>Oracle</strong>, and build responsive frontend user interfaces in <strong>React</strong>.
           </p>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+          <div class="dashboard-subgrid">
             <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); border-radius: 10px">
               <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--dev-color); font-family: var(--font-mono)">FastAPI & Django</h4>
               <p style="font-size: 0.85rem; color: var(--text-secondary)">Creating clean, testable, and optimized API endpoints and database logic.</p>
@@ -320,7 +343,7 @@ function initPersonaToggle() {
           <p style="margin-bottom: 1.5rem; line-height: 1.7; color: var(--text-secondary)">
             As a Software QA Enthusiast, I am committed to delivering high-quality, bug-free applications. I formulate rigorous test case parameters, design test scenarios, monitor defects across their lifecycle, and conduct thorough functional, regression, integration, and performance checks.
           </p>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+          <div class="dashboard-subgrid">
             <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); border-radius: 10px">
               <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--qa-color); font-family: var(--font-mono)">Manual & Automation</h4>
               <p style="font-size: 0.85rem; color: var(--text-secondary)">Building robust web-based test suites using Selenium and Postman.</p>
