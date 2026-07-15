@@ -2,6 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      window.addEventListener('error', function(e) {
+        console.error('Captured JS Error:', e);
+        const showErr = () => {
+          const errDiv = document.createElement('div');
+          errDiv.style.position = 'fixed';
+          errDiv.style.bottom = '10px';
+          errDiv.style.right = '10px';
+          errDiv.style.background = '#ef4444';
+          errDiv.style.color = '#fff';
+          errDiv.style.padding = '1.25rem';
+          errDiv.style.borderRadius = '12px';
+          errDiv.style.zIndex = '999999';
+          errDiv.style.fontFamily = 'monospace';
+          errDiv.style.fontSize = '0.8rem';
+          errDiv.style.maxWidth = '90vw';
+          errDiv.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+          errDiv.style.border = '1px solid rgba(255,255,255,0.2)';
+          errDiv.innerText = '⚠️ JS Run Error:\n' + e.message + '\n\nFile: ' + e.filename.split('/').pop() + '\nLine: ' + e.lineno;
+          document.body.appendChild(errDiv);
+        };
+        if (document.body) {
+          showErr();
+        } else {
+          document.addEventListener('DOMContentLoaded', showErr);
+        }
+      });
+    </script>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sam Peeter | Python Developer & Software Testing Enthusiast</title>
@@ -11,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=1.6">
+    <link rel="stylesheet" href="style.css?v=1.7">
   </head>
   <body class="theme-dev">
     <!-- Ambient blurred background elements -->
@@ -486,7 +514,7 @@
     </footer>
 
     <!-- Main JavaScript File -->
-    <script src="script.js?v=1.6"></script>
+    <script src="script.js?v=1.7"></script>
     <script>
       // Setup current year dynamically
       document.getElementById('footer-year').innerText = new Date().getFullYear();

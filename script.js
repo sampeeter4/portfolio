@@ -249,28 +249,28 @@ function initPersonaToggle() {
       // Update Dashboard Content
       document.getElementById('about-dashboard-content').innerHTML = `
         <div>
-          <h3 style="fontSize: 1.5rem; marginBottom: 1rem; color: var(--dev-color)">Building Robust, Scalable Backend Architectures</h3>
-          <p style="marginBottom: 1.5rem; lineHeight: 1.7; color: var(--text-secondary)">
+          <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--dev-color)">Building Robust, Scalable Backend Architectures</h3>
+          <p style="margin-bottom: 1.5rem; line-height: 1.7; color: var(--text-secondary)">
             As a Python Developer, I focus on building stable and highly performant backend architectures using modern frameworks like <strong>FastAPI</strong> and <strong>Django</strong>. I structure secure REST APIs, model relational database tables using <strong>MySQL</strong> and <strong>Oracle</strong>, and build responsive frontend user interfaces in <strong>React</strong>.
           </p>
-          <div style="display: grid; gridTemplateColumns: 1fr 1fr; gap: 1rem">
-            <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); borderRadius: 10px">
-              <h4 style="fontSize: 0.9rem; marginBottom: 0.5rem; color: var(--dev-color); fontFamily: var(--font-mono)">FastAPI & Django</h4>
-              <p style="fontSize: 0.85rem; color: var(--text-secondary)">Creating clean, testable, and optimized API endpoints and database logic.</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+            <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); border-radius: 10px">
+              <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--dev-color); font-family: var(--font-mono)">FastAPI & Django</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary)">Creating clean, testable, and optimized API endpoints and database logic.</p>
             </div>
-            <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); borderRadius: 10px">
-              <h4 style="fontSize: 0.9rem; marginBottom: 0.5rem; color: var(--dev-color); fontFamily: var(--font-mono)">Database & ORM</h4>
-              <p style="fontSize: 0.85rem; color: var(--text-secondary)">Configuring secure SQL queries, schema tables, joins, and migration histories.</p>
+            <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); border-radius: 10px">
+              <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--dev-color); font-family: var(--font-mono)">Database & ORM</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary)">Configuring secure SQL queries, schema tables, joins, and migration histories.</p>
             </div>
           </div>
         </div>
-        <div style="background: rgba(0, 242, 254, 0.02); border: 1px solid rgba(0, 242, 254, 0.1); borderRadius: 12px; padding: 2rem">
-          <h4 style="fontFamily: var(--font-mono); color: var(--dev-color); fontSize: 0.9rem; marginBottom: 1.25rem; textTransform: uppercase; letterSpacing: 0.05em">Dev Competencies</h4>
-          <ul style="listStyle: none; display: flex; flexDirection: column; gap: 0.85rem; fontSize: 0.9rem">
-            <li style="display: flex; alignItems: center; gap: 0.5rem">⚡ REST API Design</li>
-            <li style="display: flex; alignItems: center; gap: 0.5rem">🛡️ Authentication & Middleware</li>
-            <li style="display: flex; alignItems: center; gap: 0.5rem">🤖 ML Model Implementations</li>
-            <li style="display: flex; alignItems: center; gap: 0.5rem">📦 Git & Agile Workflows</li>
+        <div style="background: rgba(0, 242, 254, 0.02); border: 1px solid rgba(0, 242, 254, 0.1); border-radius: 12px; padding: 2rem">
+          <h4 style="font-family: var(--font-mono); color: var(--dev-color); font-size: 0.9rem; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em">Dev Competencies</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.9rem">
+            <li style="display: flex; align-items: center; gap: 0.5rem">⚡ REST API Design</li>
+            <li style="display: flex; align-items: center; gap: 0.5rem">🛡️ Authentication & Middleware</li>
+            <li style="display: flex; align-items: center; gap: 0.5rem">🤖 ML Model Implementations</li>
+            <li style="display: flex; align-items: center; gap: 0.5rem">📦 Git & Agile Workflows</li>
           </ul>
         </div>
       `;
@@ -299,28 +299,28 @@ function initPersonaToggle() {
       // Update Dashboard Content
       document.getElementById('about-dashboard-content').innerHTML = `
         <div>
-          <h3 style="fontSize: 1.5rem; marginBottom: 1rem; color: var(--qa-color)">Ensuring Exceptional Software Quality & Stability</h3>
-          <p style="marginBottom: 1.5rem; lineHeight: 1.7; color: var(--text-secondary)">
+          <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--qa-color)">Ensuring Exceptional Software Quality & Stability</h3>
+          <p style="margin-bottom: 1.5rem; line-height: 1.7; color: var(--text-secondary)">
             As a Software QA Enthusiast, I am committed to delivering high-quality, bug-free applications. I formulate rigorous test case parameters, design test scenarios, monitor defects across their lifecycle, and conduct thorough functional, regression, integration, and performance checks.
           </p>
-          <div style="display: grid; gridTemplateColumns: 1fr 1fr; gap: 1rem">
-            <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); borderRadius: 10px">
-              <h4 style="fontSize: 0.9rem; marginBottom: 0.5rem; color: var(--qa-color); fontFamily: var(--font-mono)">Manual & Automation</h4>
-              <p style="fontSize: 0.85rem; color: var(--text-secondary)">Building robust web-based test suites using Selenium and Postman.</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+            <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); border-radius: 10px">
+              <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--qa-color); font-family: var(--font-mono)">Manual & Automation</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary)">Building robust web-based test suites using Selenium and Postman.</p>
             </div>
-            <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); borderRadius: 10px">
-              <h4 style="fontSize: 0.9rem; marginBottom: 0.5rem; color: var(--qa-color); fontFamily: var(--font-mono)">SDLC / STLC Process</h4>
-              <p style="fontSize: 0.85rem; color: var(--text-secondary)">Incorporating testing practices from the initial specifications through deployment.</p>
+            <div style="padding: 1rem; background: rgba(255,255,255,0.01); border: 1px solid var(--card-border); border-radius: 10px">
+              <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--qa-color); font-family: var(--font-mono)">SDLC / STLC Process</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary)">Incorporating testing practices from the initial specifications through deployment.</p>
             </div>
           </div>
         </div>
-        <div style="background: rgba(16, 185, 129, 0.02); border: 1px solid rgba(16, 185, 129, 0.1); borderRadius: 12px; padding: 2rem">
-          <h4 style="fontFamily: var(--font-mono); color: var(--qa-color); fontSize: 0.9rem; marginBottom: 1.25rem; textTransform: uppercase; letterSpacing: 0.05em">Testing Competencies</h4>
-          <ul style="listStyle: none; display: flex; flexDirection: column; gap: 0.85rem; fontSize: 0.9rem">
-            <li style="display: flex; alignItems: center; gap: 0.5rem">🐞 Bug Lifecycle Tracking</li>
-            <li style="display: flex; alignItems: center; gap: 0.5rem">📡 REST API Validation</li>
-            <li style="display: flex; alignItems: center; gap: 0.5rem">🗄️ SQL Schema Assertions</li>
-            <li style="display: flex; alignItems: center; gap: 0.5rem">🌀 JIRA & Defect Management</li>
+        <div style="background: rgba(16, 185, 129, 0.02); border: 1px solid rgba(16, 185, 129, 0.1); border-radius: 12px; padding: 2rem">
+          <h4 style="font-family: var(--font-mono); color: var(--qa-color); font-size: 0.9rem; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em">Testing Competencies</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.9rem">
+            <li style="display: flex; align-items: center; gap: 0.5rem">🐞 Bug Lifecycle Tracking</li>
+            <li style="display: flex; align-items: center; gap: 0.5rem">📡 REST API Validation</li>
+            <li style="display: flex; align-items: center; gap: 0.5rem">🗄️ SQL Schema Assertions</li>
+            <li style="display: flex; align-items: center; gap: 0.5rem">🌀 JIRA & Defect Management</li>
           </ul>
         </div>
       `;
@@ -694,17 +694,17 @@ function renderProjects() {
         
         let hlHTML = '';
         project.devHighlights.forEach(hl => {
-          hlHTML += `<li style="marginBottom: 0.5rem">${hl}</li>`;
+          hlHTML += `<li style="margin-bottom: 0.5rem">${hl}</li>`;
         });
 
         detailsView.innerHTML = `
-          <p style="marginBottom: 1rem; fontSize: 0.9rem; lineHeight: 1.5; color: var(--text-secondary)">
+          <p style="margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary)">
             ${project.devOverview}
           </p>
-          <h4 style="fontSize: 0.85rem; textTransform: uppercase; letterSpacing: 0.05em; color: var(--accent-color); marginBottom: 0.5rem; fontFamily: var(--font-mono)">
+          <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-color); margin-bottom: 0.5rem; font-family: var(--font-mono)">
             Engineering Accomplishments:
           </h4>
-          <ul style="paddingLeft: 1.25rem; fontSize: 0.875rem; color: var(--text-secondary)">
+          <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary)">
             ${hlHTML}
           </ul>
         `;
@@ -714,29 +714,29 @@ function renderProjects() {
 
         let qaHlHTML = '';
         project.qaHighlights.forEach(hl => {
-          qaHlHTML += `<li style="marginBottom: 0.5rem">${hl}</li>`;
+          qaHlHTML += `<li style="margin-bottom: 0.5rem">${hl}</li>`;
         });
 
         detailsView.innerHTML = `
-          <p style="marginBottom: 1rem; fontSize: 0.9rem; lineHeight: 1.5; color: var(--text-secondary)">
+          <p style="margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary)">
             ${project.qaOverview}
           </p>
           
-          <div style="display: flex; gap: 1rem; marginBottom: 1rem">
-            <div style="flex: 1; padding: 0.5rem 0.75rem; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.15); borderRadius: 6px; textAlign: center">
-              <div style="fontSize: 0.7rem; textTransform: uppercase; color: var(--text-muted); fontFamily: var(--font-mono)">Cases Run</div>
-              <div style="fontSize: 1.25rem; fontWeight: bold; color: #10B981; fontFamily: var(--font-mono)">${project.testCasesCount}</div>
+          <div style="display: flex; gap: 1rem; margin-bottom: 1rem">
+            <div style="flex: 1; padding: 0.5rem 0.75rem; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.15); border-radius: 6px; text-align: center">
+              <div style="font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono)">Cases Run</div>
+              <div style="font-size: 1.25rem; font-weight: bold; color: #10B981; font-family: var(--font-mono)">${project.testCasesCount}</div>
             </div>
-            <div style="flex: 1; padding: 0.5rem 0.75rem; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.15); borderRadius: 6px; textAlign: center">
-              <div style="fontSize: 0.7rem; textTransform: uppercase; color: var(--text-muted); fontFamily: var(--font-mono)">Bugs Filed</div>
-              <div style="fontSize: 1.25rem; fontWeight: bold; color: #EF4444; fontFamily: var(--font-mono)">${project.bugsFiledCount}</div>
+            <div style="flex: 1; padding: 0.5rem 0.75rem; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.15); border-radius: 6px; text-align: center">
+              <div style="font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono)">Bugs Filed</div>
+              <div style="font-size: 1.25rem; font-weight: bold; color: #EF4444; font-family: var(--font-mono)">${project.bugsFiledCount}</div>
             </div>
           </div>
 
-          <h4 style="fontSize: 0.85rem; textTransform: uppercase; letterSpacing: 0.05em; color: var(--accent-color); marginBottom: 0.5rem; fontFamily: var(--font-mono)">
+          <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-color); margin-bottom: 0.5rem; font-family: var(--font-mono)">
             Testing & QA Execution Details:
           </h4>
-          <ul style="paddingLeft: 1.25rem; fontSize: 0.875rem; color: var(--text-secondary)">
+          <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary)">
             ${qaHlHTML}
           </ul>
         `;
