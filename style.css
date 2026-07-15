@@ -923,8 +923,7 @@ p {
 }
 
 .skill-card {
-  animation: skillCardFade 0.4s ease forwards;
-  animation-delay: calc(var(--card-index) * 0.05s);
+  opacity: 0;
 }
 
 .skill-badge {

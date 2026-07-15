@@ -521,7 +521,8 @@ function renderSkills(filterType, searchVal) {
     const card = document.createElement('div');
     card.className = 'glass-card skill-card';
     card.style.padding = '1.5rem';
-    card.style.setProperty('--card-index', idx);
+    card.style.animation = 'skillCardFade 0.4s ease forwards';
+    card.style.animationDelay = `${idx * 0.05}s`;
     card.style.borderLeft = `4px solid ${cardColorBorder}`;
 
     let skillsHTML = '';
